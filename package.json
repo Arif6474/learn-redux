@@ -1,7 +1,6 @@
 {
   "name": "learn-redux",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "redux": "^4.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arif6474/learn-redux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Arif6474/learn-redux/issues"
+  },
+  "homepage": "https://github.com/Arif6474/learn-redux#readme",
+  "description": ""
 }
