@@ -1,13 +1,20 @@
-const { createStore } = require("redux")
-
+const { createStore, combineReducers } = require("redux")
+// product variable
 const GET_PRODUCT = "GET_PRODUCT"
 const ADD_PRODUCT = "ADD_PRODUCT"
+// services variable
+const GET_SERVICES = "GET_SERVICES"
+const ADD_SERVICES = "ADD_SERVICES"
 
 //product state
-
 const initialProductState = {
     products : ["sugar", "salt"],
     numberOfProducts : 2
+}
+//services state
+const initialServiceState = {
+    services : ["seo"],
+    numberOfServices : 1
 }
 
 //product action 
@@ -17,9 +24,21 @@ const getProduct = () => {
    }
 }
 const addProduct = (product) => {
+    return {
+     type : ADD_PRODUCT,
+     payload : product
+    }
+ }
+//services action 
+const getServices = () => {
    return {
-    type : ADD_PRODUCT,
-    payload : product
+    type : GET_SERVICES
+   }
+}
+const addServices = (services) => {
+   return {
+    type : ADD_SERVICES,
+    payload : services
    }
 }
 
@@ -37,11 +56,32 @@ const addProduct = (product) => {
         }
    
     default:
-        state;
+       return state;
    }
  }
- //product store 
- const store = createStore(productReducer);
+//services reducer 
+ const serviceReducer = (state = initialServiceState, action) => {
+   switch (action.type) {
+    case GET_SERVICES:
+        return {
+            ...state,
+        }
+    case ADD_SERVICES:
+        return {
+         products : [...state.services , action.payload ],
+         numberOfServices : state.numberOfServices + 1
+        }
+   
+    default:
+       return state;
+   }
+ }
+ const rootReducer = combineReducers({
+    productsR : productReducer,
+    servicesR : serviceReducer
+ })
+ // store 
+ const store = createStore(rootReducer);
  store.subscribe(() => {
     console.log(store.getState());
  })
@@ -49,3 +89,5 @@ const addProduct = (product) => {
  store.dispatch(getProduct())
  store.dispatch(addProduct("tea"))
  store.dispatch(addProduct("drink"))
+ store.dispatch(getServices())
+ store.dispatch(addServices("web design"))
