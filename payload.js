@@ -1,7 +1,7 @@
 const { createStore } = require("redux");
 
-const ADD_USER = ADD_USER;
-const INCREMENT = INCREMENT;
+const ADD_USER = "ADD_USER";
+const INCREMENT ="INCREMENT";
 
 // state
 const initialState = {
@@ -34,3 +34,4 @@ store.subscribe(()=>{
     console.log(store.getState());
 })
 store.dispatch(addUser("emon"));
+store.dispatch(addUser("shahid"));
